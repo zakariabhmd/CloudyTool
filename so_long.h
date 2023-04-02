@@ -6,9 +6,17 @@
 #include "./ft_printf/ft_printf.h"
 #include <fcntl.h>
 
+# include <stdio.h>
+#include <unistd.h>
+
 typedef struct s_savage
 {
-    char **map;
+    char    **map;
+    int     x;
+    int     y;
+    int     p;
+    int     e;
+    int     c;
 
 }t_savage;
 
