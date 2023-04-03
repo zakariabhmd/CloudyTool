@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/02 09:43:05 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/03 21:31:05 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,9 +138,9 @@ void	check_map(char *len)
 	if (len[i] != 'r')
 		exit(1);
 	if (len[i - 1] != 'e')
-		exit(0);
+		exit(1);
 	if(len[i - 2] != 'b')
-		exit(0);
+		exit(1);
 }
 
 void check_items(t_savage *criminal, int y, int x)
@@ -183,8 +183,10 @@ void check_len(t_savage *criminal, int y, int x)
 	i = 0;
 	while (i != y)
 	{
-		if (x != ft_strlen(criminal->map[i]))
+		if (x != ft_strlen(criminal->map[i])){
+		ft_printf("tol maci hwa hadak");
 			exit(1);
+		}
 		i++;
 	}
 }
@@ -199,12 +201,12 @@ void check_num(t_savage *criminal, int y, int x)
 	{
 		if(criminal->map[0][i] != '1')
 		{
-			// ft_printf("maxi 1\n");
+			ft_printf("maxi 1\n");
 			exit(0);
 		}
 		if(criminal->map[y - 1][i] != '1')
 		{
-			// ft_printf("maxi 1\n");
+			ft_printf("maxi 1\n");
 			exit(1);
 		}
 		i++;
@@ -214,7 +216,7 @@ void check_num(t_savage *criminal, int y, int x)
 	{
 		if(criminal->map[i][0] != '1' || criminal->map[i][x - 1] != '1')
 		{
-			// ft_printf("machi 1\n");
+			ft_printf("machi 1\n");
 			exit(1);
 		}
 		i++;
@@ -226,7 +228,7 @@ void  calyx(int *y, int *x, int fd)
 	int i = 0;
 	char	*str;
 	
-	while( i != 10)
+	while(i != 10)
 	{
 		str = get_next_line(fd);
 		if(str == NULL)
@@ -242,10 +244,12 @@ void  calyx(int *y, int *x, int fd)
 void reader(t_savage *criminal, int fd)
 {
     char *str = get_next_line(fd);
+	criminal->tol = ft_strlen(str)-1;
     char *twile = malloc(1);
     while(str)
     {
         twile = ft_strjoin_get(twile, str);
+		criminal->lines++;
         str = get_next_line(fd);
     }
     criminal->map = ft_split(twile, '\n');
@@ -268,11 +272,20 @@ int main(int ac, char **av)
 	check_num(&criminal, criminal.y, criminal.x);
 	check_items(&criminal, criminal.y, criminal.x);
 	check_error(&criminal, criminal.y, criminal.x);
-	int idx = 0;
-	// while (criminal.map[idx])
-	// {
-	// 	printf("%s", criminal.map[idx]);
-	// 	printf("\n");
-	// 	idx++;
-	// }
+// 	int idx = 0;
+// 	while (criminal.map[idx])
+// 	{
+// 		printf("%s", criminal.map[idx]);
+// 		printf("\n");
+// 		idx++;
+// 	}
+}
+
+// ---------------------------------------------------------
+
+void init(t_savage *criminal){
+
+	criminal->mlx = mlx_init();
+	criminal->win = mlx_new_window(criminal->mlx,criminal->tol*32,criminal->lines*32,"lo3ba l3ajiba");
+	
 }

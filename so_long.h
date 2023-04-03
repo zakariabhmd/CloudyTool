@@ -8,6 +8,7 @@
 
 # include <stdio.h>
 #include <unistd.h>
+#include <mlx.h>
 
 typedef struct s_savage
 {
@@ -17,7 +18,20 @@ typedef struct s_savage
     int     p;
     int     e;
     int     c;
-
+    int tol;
+    int lines;
+    void* mlx;
+    void* win;
+    char* wall;
+    char* coin;
+    char* player;
+    char* floor;
+    char* door;
+    void* imgwall;
+    void* imgcoin;
+    void* imgplayer;
+    void* imgfloor;
+    void* imgdoor;
 }t_savage;
 
 
