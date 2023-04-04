@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/03 21:31:05 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/03 22:42:42 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,7 +260,7 @@ int main(int ac, char **av)
     t_savage criminal;
 	int		x;
 	int		y;
-
+	// criminal = malloc(sizeof(t_savage));
 	x = 0;
 	y = 0;
 	check_map(av[1]);
@@ -272,6 +272,7 @@ int main(int ac, char **av)
 	check_num(&criminal, criminal.y, criminal.x);
 	check_items(&criminal, criminal.y, criminal.x);
 	check_error(&criminal, criminal.y, criminal.x);
+	initialisation(&criminal);
 // 	int idx = 0;
 // 	while (criminal.map[idx])
 // 	{
@@ -283,9 +284,59 @@ int main(int ac, char **av)
 
 // ---------------------------------------------------------
 
-void init(t_savage *criminal){
+void initialisation(t_savage *criminal){
 
+	int		img_width;
+	int		img_height;
 	criminal->mlx = mlx_init();
-	criminal->win = mlx_new_window(criminal->mlx,criminal->tol*32,criminal->lines*32,"lo3ba l3ajiba");
+	criminal->win = mlx_new_window(criminal->mlx,criminal->x*32,criminal->y*32,"lo3ba l3ajiba");
+	ft_printf("q= %d qq = %d\n",criminal->x,criminal->y);
+	criminal->wall = "./wall.xpm";
+	criminal->coin = "./coin.xpm";
+	criminal->player = "./player.xpm";
+	criminal->floor = "./floor.xpm";
+	criminal->door = "./door.xpm";
+	criminal->imgwall = mlx_xpm_file_to_image(criminal->mlx,criminal->wall,&criminal->width,&criminal->height);
+	criminal->imgcoin = mlx_xpm_file_to_image(criminal->mlx,criminal->coin,&criminal->width,&criminal->height);
+	criminal->imgplayer = mlx_xpm_file_to_image(criminal->mlx,criminal->player,&criminal->width,&criminal->height);
+	criminal->imgfloor = mlx_xpm_file_to_image(criminal->mlx,criminal->floor,&criminal->width,&criminal->height);
+	criminal->imgdoor = mlx_xpm_file_to_image(criminal->mlx,criminal->door,&criminal->width,&criminal->height);
+	ressam(criminal);
+	mlx_loop(criminal->mlx);
+}
+
+void ressam(t_savage *criminal){
 	
+	int x = 0;
+	int y = 0;
+
+
+	while (y < criminal->y){
+		while (x < criminal->x)
+		{
+			if (criminal->map[y][x]== '1')
+			{
+				mlx_put_image_to_window(criminal->mlx,criminal->win,criminal->imgwall,x*32,y*32);
+			}
+			if (criminal->map[y][x]== '0' ||criminal->map[y][x]== 'E' ||criminal->map[y][x]== 'P'||criminal->map[y][x]== 'C')
+			{
+				mlx_put_image_to_window(criminal->mlx,criminal->win,criminal->imgfloor,x*32,y*32);
+			}
+			if (criminal->map[y][x]== 'E')
+			{
+				mlx_put_image_to_window(criminal->mlx,criminal->win,criminal->imgdoor,x*32,y*32);
+			}
+			if (criminal->map[y][x]== 'P')
+			{
+				mlx_put_image_to_window(criminal->mlx,criminal->win,criminal->imgplayer,x*32,y*32);
+			}
+			if (criminal->map[y][x]== 'C')
+			{
+				mlx_put_image_to_window(criminal->mlx,criminal->win,criminal->imgcoin,x*32,y*32);
+			}
+			x++;
+		}
+		x=0;
+		y++;		
+	}
 }

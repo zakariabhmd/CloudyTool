@@ -12,31 +12,33 @@
 
 typedef struct s_savage
 {
+    void *imgwall;
+    void *imgcoin;
+    void *imgplayer;
+    void *imgfloor;
+    void *imgdoor;
+    void *mlx;
     char    **map;
     int     x;
     int     y;
     int     p;
     int     e;
     int     c;
+    int width;
+    int height;
     int tol;
     int lines;
-    void* mlx;
-    void* win;
+    void *win;
     char* wall;
     char* coin;
     char* player;
     char* floor;
     char* door;
-    void* imgwall;
-    void* imgcoin;
-    void* imgplayer;
-    void* imgfloor;
-    void* imgdoor;
 }t_savage;
 
 
-
-
+void initialisation(t_savage *criminal);
+void ressam(t_savage *criminal);
 
 
 #endif
