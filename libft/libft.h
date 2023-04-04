@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 05:12:46 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/02 07:01:41 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/04 03:03:05 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isprint(int c);
 int		ft_isascii(int c);
-int	    ft_strlen(char *str);
+size_t	ft_strlen(const char *str);
 void	*ft_memset(void *b, int bache, size_t ch7al);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);

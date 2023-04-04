@@ -6,104 +6,104 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/04 00:52:55 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/04 03:02:52 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*str;
-	size_t	a;
-	size_t	b;
+// char	*ft_substr(char const *s, unsigned int start, size_t len)
+// {
+// 	char	*str;
+// 	size_t	a;
+// 	size_t	b;
 
-	a = 0;
-	b = 0;
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (0);
-	while (s[a])
-	{
-		if (a >= start && b < len)
-		{
-			str[b] = s[a];
-			b++;
-		}
-		a++;
-	}
-	str[b] = '\0';
-	return (str);
-}
+// 	a = 0;
+// 	b = 0;
+// 	str = (char *)malloc(sizeof(char) * (len + 1));
+// 	if (!str)
+// 		return (0);
+// 	while (s[a])
+// 	{
+// 		if (a >= start && b < len)
+// 		{
+// 			str[b] = s[a];
+// 			b++;
+// 		}
+// 		a++;
+// 	}
+// 	str[b] = '\0';
+// 	return (str);
+// }
 
-int	counter(const char *tpm, char c)
-{
-	int	i;
-	int	count;
+// int	counter(const char *tpm, char c)
+// {
+// 	int	i;
+// 	int	count;
 
-	i = 0;
-	count = 0;
-	while (*tpm)
-	{
-		if (*tpm != c && count == 0)
-		{
-			count = 1;
-			i++;
-		}
-		else if (*tpm == c)
-			count = 0;
-		tpm++;
-	}
-	return (i);
-}
+// 	i = 0;
+// 	count = 0;
+// 	while (*tpm)
+// 	{
+// 		if (*tpm != c && count == 0)
+// 		{
+// 			count = 1;
+// 			i++;
+// 		}
+// 		else if (*tpm == c)
+// 			count = 0;
+// 		tpm++;
+// 	}
+// 	return (i);
+// }
 
-int	size_word(char const *s, char c, int i)
-{
-	int	size;
+// int	size_word(char const *s, char c, int i)
+// {
+// 	int	size;
 
-	size = 0;
-	while (s[i] != c && s[i])
-	{
-		size++;
-		i++;
-	}
-	return (size);
-}
+// 	size = 0;
+// 	while (s[i] != c && s[i])
+// 	{
+// 		size++;
+// 		i++;
+// 	}
+// 	return (size);
+// }
 
-char	**ft_split(char const *s, char c)
-{
-	int		i;
-	int		word;
-	int		size;
-	char	**sp;
-	int		j;
+// char	**ft_split(char const *s, char c)
+// {
+// 	int		i;
+// 	int		word;
+// 	int		size;
+// 	char	**sp;
+// 	int		j;
 
-	i = 0;
-	j = -1;
-	word = counter(s, c);
-	sp = (char **)malloc((word + 1) * sizeof(char *));
-	if (!sp)
-		return (0);
-	while (++j < word)
-	{
-		while (s[i] == c)
-			i++;
-		size = size_word(s, c, i);
-		sp[j] = ft_substr(s, i, size);
-		i += size;
-	}
-	sp[j] = 0;
-	return (sp);
-}
+// 	i = 0;
+// 	j = -1;
+// 	word = counter(s, c);
+// 	sp = (char **)malloc((word + 1) * sizeof(char *));
+// 	if (!sp)
+// 		return (0);
+// 	while (++j < word)
+// 	{
+// 		while (s[i] == c)
+// 			i++;
+// 		size = size_word(s, c, i);
+// 		sp[j] = ft_substr(s, i, size);
+// 		i += size;
+// 	}
+// 	sp[j] = 0;
+// 	return (sp);
+// }
 
-int	ft_strlen(char *str)
-{
-	int	i;
+// int	ft_strlen(char *str)
+// {
+// 	int	i;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
+// 	i = 0;
+// 	while (str[i] != '\0')
+// 		i++;
+// 	return (i);
+// }
 
 // ----------------------------------map-----------------------------------------------
 
@@ -133,7 +133,7 @@ void	check_error(t_savage *criminal, int y, int x)
 void	check_map(char *len)
 {
 	int i;
-	
+
 	i = ft_strlen(len) - 1;
 	if (len[i] != 'r')
 		exit(1);
@@ -179,7 +179,7 @@ void check_items(t_savage *criminal, int y, int x)
 void check_len(t_savage *criminal, int y, int x)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i != y)
 	{
@@ -194,8 +194,8 @@ void check_len(t_savage *criminal, int y, int x)
 void check_num(t_savage *criminal, int y, int x)
 {
 	int i;
-	
-	
+
+
 	i = 0;
 	while(i != x)
 	{
@@ -227,7 +227,7 @@ void  calyx(int *y, int *x, int fd)
 {
 	int i = 0;
 	char	*str;
-	
+
 	while(i != 10)
 	{
 		str = get_next_line(fd);
@@ -282,10 +282,22 @@ int main(int ac, char **av)
 // 	}
 }
 
-// ---------------------------hooks-------------------------------------
+// ---------------------------hooks-----------------------------------
 
 
+int print_mouves(int k)
+{
+	if (k == 13)
+		ft_printf("up\n");
+	if (k == 0)
+		ft_printf("left\n");
+	if (k == 1)
+		ft_printf("down\n");
+	if (k == 2)
+		ft_printf("right\n");
 
+	return (0);
+}
 // -------------------------graphics--------------------------------
 
 void initialisation(t_savage *criminal){
@@ -306,11 +318,12 @@ void initialisation(t_savage *criminal){
 	criminal->imgfloor = mlx_xpm_file_to_image(criminal->mlx,criminal->floor,&criminal->width,&criminal->height);
 	criminal->imgdoor = mlx_xpm_file_to_image(criminal->mlx,criminal->door,&criminal->width,&criminal->height);
 	ressam(criminal);
+	mlx_hook(criminal->win, 2, 0, print_mouves, NULL);
 	mlx_loop(criminal->mlx);
 }
 
 void ressam(t_savage *criminal){
-	
+
 	int x = 0;
 	int y = 0;
 
@@ -341,6 +354,6 @@ void ressam(t_savage *criminal){
 			x++;
 		}
 		x=0;
-		y++;		
+		y++;
 	}
 }
