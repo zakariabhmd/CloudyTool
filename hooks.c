@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 06:43:38 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/05 06:49:53 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/05 07:12:31 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int print_mouves(int k, t_savage *criminal)
 			modify_map(criminal, &wanted_pos, 'P');
 			ressam(criminal);
 		}
-		ft_printf("up\n");
+		// ft_printf("up\n");
 	}
 	if (k == 0)
 	{
@@ -43,7 +43,7 @@ int print_mouves(int k, t_savage *criminal)
 			modify_map(criminal, &wanted_pos, 'P');
 			ressam(criminal);
 		}
-		ft_printf("left\n");
+		// ft_printf("left\n");
 	}
 	if (k == 1)
 	{
@@ -56,7 +56,7 @@ int print_mouves(int k, t_savage *criminal)
 			modify_map(criminal, &wanted_pos, 'P');
 			ressam(criminal);
 		}
-		ft_printf("down\n");
+		// ft_printf("down\n");
 	}
 	if (k == 2)
 	{
@@ -69,7 +69,7 @@ int print_mouves(int k, t_savage *criminal)
 			modify_map(criminal, &wanted_pos, 'P');
 			ressam(criminal);
 		}
-		ft_printf("right\n");
+		// ft_printf("right\n");
 	}
 	if (k == 53)
 	exit (1);
