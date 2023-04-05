@@ -33,9 +33,18 @@ typedef struct s_savage
     char    *door;
 }t_savage;
 
+typedef struct s_dim
+{
+    int x;
+    int y;
+} t_dim;
+
 
 void initialisation(t_savage *criminal);
 void ressam(t_savage *criminal);
+t_dim get_player_position(t_savage *criminal);
+char get_position_in_map(t_savage *criminal, t_dim *wanted_dim);
+void modify_map(t_savage *criminal, t_dim *position, char with_what);
 
 
 #endif

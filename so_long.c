@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/04 03:02:52 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/05 06:41:39 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,20 +176,20 @@ void check_items(t_savage *criminal, int y, int x)
 	ft_printf("makayche exit");
 }
 
-void check_len(t_savage *criminal, int y, int x)
-{
-	int	i;
+// void check_len(t_savage *criminal, int y, int x)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i != y)
-	{
-		if (x != ft_strlen(criminal->map[i])){
-		ft_printf("tol maci hwa hadak");
-			exit(1);
-		}
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (i != y)
+// 	{
+// 		if (x != ft_strlen(criminal->map[i])){
+// 		ft_printf("tol maci hwa hadak");
+// 			exit(1);
+// 		}
+// 		i++;
+// 	}
+// }
 
 void check_num(t_savage *criminal, int y, int x)
 {
@@ -202,11 +202,13 @@ void check_num(t_savage *criminal, int y, int x)
 		if(criminal->map[0][i] != '1')
 		{
 			ft_printf("maxi 1\n");
-			exit(0);
+			ft_printf("hna");
+			exit(1);
 		}
 		if(criminal->map[y - 1][i] != '1')
 		{
 			ft_printf("maxi 1\n");
+			ft_printf("hna1");
 			exit(1);
 		}
 		i++;
@@ -217,6 +219,7 @@ void check_num(t_savage *criminal, int y, int x)
 		if(criminal->map[i][0] != '1' || criminal->map[i][x - 1] != '1')
 		{
 			ft_printf("machi 1\n");
+			ft_printf("hna2");
 			exit(1);
 		}
 		i++;
@@ -251,6 +254,7 @@ void reader(t_savage *criminal, int fd)
         twile = ft_strjoin_get(twile, str);
 		criminal->lines++;
         str = get_next_line(fd);
+
     }
     criminal->map = ft_split(twile, '\n');
 }
@@ -268,7 +272,7 @@ int main(int ac, char **av)
 	calyx(&criminal.y, &criminal.x, fd);
     int fd2 = open(av[1], O_RDONLY);
     reader(&criminal, fd);
-	check_len(&criminal, criminal.y, criminal.x);
+	// check_len(&criminal, criminal.y, criminal.x);
 	check_num(&criminal, criminal.y, criminal.x);
 	check_items(&criminal, criminal.y, criminal.x);
 	check_error(&criminal, criminal.y, criminal.x);
@@ -285,19 +289,69 @@ int main(int ac, char **av)
 // ---------------------------hooks-----------------------------------
 
 
-int print_mouves(int k)
+int print_mouves(int k, t_savage *criminal)
 {
-	if (k == 13)
-		ft_printf("up\n");
-	if (k == 0)
-		ft_printf("left\n");
-	if (k == 1)
-		ft_printf("down\n");
-	if (k == 2)
-		ft_printf("right\n");
+	// printf("%s\n", criminal->map[0]);
+	t_dim player_pos = get_player_position(criminal);
+	t_dim wanted_pos;
+	char next_pos;
 
+	if (k == 13)
+	{
+		wanted_pos.x = player_pos.x;
+		wanted_pos.y = player_pos.y - 1;
+		next_pos = get_position_in_map(criminal, &wanted_pos);
+		if (next_pos == 'C' || next_pos == '0')
+		{
+			modify_map(criminal, &player_pos, '0');
+			modify_map(criminal, &wanted_pos, 'P');
+			ressam(criminal);
+		}
+		ft_printf("up\n");
+	}
+	if (k == 0)
+	{
+		wanted_pos.x = player_pos.x - 1;
+		wanted_pos.y = player_pos.y;
+		next_pos = get_position_in_map(criminal, &wanted_pos);
+		if (next_pos == 'C' || next_pos == '0')
+		{
+			modify_map(criminal, &player_pos, '0');
+			modify_map(criminal, &wanted_pos, 'P');
+			ressam(criminal);
+		}
+		ft_printf("left\n");
+	}
+	if (k == 1)
+	{
+		wanted_pos.x = player_pos.x;
+		wanted_pos.y = player_pos.y + 1;
+		next_pos = get_position_in_map(criminal, &wanted_pos);
+		if (next_pos == 'C' || next_pos == '0')
+		{
+			modify_map(criminal, &player_pos, '0');
+			modify_map(criminal, &wanted_pos, 'P');
+			ressam(criminal);
+		}
+		ft_printf("down\n");
+	}
+	if (k == 2)
+	{
+		wanted_pos.x = player_pos.x + 1;
+		wanted_pos.y = player_pos.y;
+		next_pos = get_position_in_map(criminal, &wanted_pos);
+		if (next_pos == 'C' || next_pos == '0')
+		{
+			modify_map(criminal, &player_pos, '0');
+			modify_map(criminal, &wanted_pos, 'P');
+			ressam(criminal);
+		}
+		ft_printf("right\n");
+	}
 	return (0);
 }
+
+
 // -------------------------graphics--------------------------------
 
 void initialisation(t_savage *criminal){
@@ -306,7 +360,7 @@ void initialisation(t_savage *criminal){
 	int		img_height;
 	criminal->mlx = mlx_init();
 	criminal->win = mlx_new_window(criminal->mlx,criminal->x*32,criminal->y*32,"lo3ba l3ajiba");
-	ft_printf("q= %d qq = %d\n",criminal->x,criminal->y);
+	// ft_printf("q= %d qq = %d\n",criminal->x,criminal->y);
 	criminal->wall = "./wall.xpm";
 	criminal->coin = "./coin.xpm";
 	criminal->player = "./player.xpm";
@@ -318,7 +372,7 @@ void initialisation(t_savage *criminal){
 	criminal->imgfloor = mlx_xpm_file_to_image(criminal->mlx,criminal->floor,&criminal->width,&criminal->height);
 	criminal->imgdoor = mlx_xpm_file_to_image(criminal->mlx,criminal->door,&criminal->width,&criminal->height);
 	ressam(criminal);
-	mlx_hook(criminal->win, 2, 0, print_mouves, NULL);
+	mlx_hook(criminal->win, 2, 0, print_mouves, criminal);
 	mlx_loop(criminal->mlx);
 }
 
