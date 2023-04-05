@@ -45,6 +45,7 @@ void ressam(t_savage *criminal);
 t_dim get_player_position(t_savage *criminal);
 char get_position_in_map(t_savage *criminal, t_dim *wanted_dim);
 void modify_map(t_savage *criminal, t_dim *position, char with_what);
+int print_mouves(int k, t_savage *criminal);
 
 
 #endif
