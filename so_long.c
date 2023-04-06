@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/05 06:44:30 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:15:06 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,20 +176,20 @@ void check_items(t_savage *criminal, int y, int x)
 	ft_printf("makayche exit");
 }
 
-// void check_len(t_savage *criminal, int y, int x)
-// {
-// 	int	i;
+void check_len(t_savage *criminal, int y, int x)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (i != y)
-// 	{
-// 		if (x != ft_strlen(criminal->map[i])){
-// 		ft_printf("tol maci hwa hadak");
-// 			exit(1);
-// 		}
-// 		i++;
-// 	}
-// }
+	i = 0;
+	while (i != y)
+	{
+		if (x != ft_strlen(criminal->map[i])){
+		ft_printf("tol maci hwa hadak");
+			exit(1);
+		}
+		i++;
+	}
+}
 
 void check_num(t_savage *criminal, int y, int x)
 {
@@ -201,14 +201,12 @@ void check_num(t_savage *criminal, int y, int x)
 	{
 		if(criminal->map[0][i] != '1')
 		{
-			ft_printf("maxi 1\n");
-			ft_printf("hna");
+			// ft_printf("maxi 1\n");
 			exit(1);
 		}
 		if(criminal->map[y - 1][i] != '1')
 		{
-			ft_printf("maxi 1\n");
-			ft_printf("hna1");
+			// ft_printf("maxi 1\n");
 			exit(1);
 		}
 		i++;
@@ -218,8 +216,7 @@ void check_num(t_savage *criminal, int y, int x)
 	{
 		if(criminal->map[i][0] != '1' || criminal->map[i][x - 1] != '1')
 		{
-			ft_printf("machi 1\n");
-			ft_printf("hna2");
+			// ft_printf("machi 1\n");
 			exit(1);
 		}
 		i++;
@@ -264,7 +261,7 @@ int main(int ac, char **av)
     t_savage criminal;
 	int		x;
 	int		y;
-	// criminal = malloc(sizeof(t_savage));
+	
 	x = 0;
 	y = 0;
 	check_map(av[1]);
@@ -272,7 +269,7 @@ int main(int ac, char **av)
 	calyx(&criminal.y, &criminal.x, fd);
     int fd2 = open(av[1], O_RDONLY);
     reader(&criminal, fd);
-	// check_len(&criminal, criminal.y, criminal.x);
+	check_len(&criminal, criminal.y, criminal.x);
 	check_num(&criminal, criminal.y, criminal.x);
 	check_items(&criminal, criminal.y, criminal.x);
 	check_error(&criminal, criminal.y, criminal.x);
