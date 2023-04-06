@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/06 00:35:45 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/06 08:12:54 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,12 @@
 // 	return (i);
 // }
 
-// ----------------------------------map-----------------------------------------------
+// ----------------------------------map-----------------
 
 void	check_error(t_savage *criminal, int y, int x)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -120,7 +120,7 @@ void	check_error(t_savage *criminal, int y, int x)
 		{
 			if (criminal->map[i][j] != '1' && criminal->map[i][j] != '0' && criminal->map[i][j] != 'P' && criminal->map[i][j] != 'E' && criminal->map[i][j] != 'C')
 			{
-				ft_printf("error");
+				ft_printf("ERROR : makaynche 1 || 0 || P || E || C");
 				exit(1);
 			}
 			j++;
@@ -132,20 +132,20 @@ void	check_error(t_savage *criminal, int y, int x)
 
 void	check_map(char *len)
 {
-	int i;
+	int	i;
 
 	i = ft_strlen(len) - 1;
 	if (len[i] != 'r')
-		exit(1);
+		exit (1);
 	if (len[i - 1] != 'e')
-		exit(1);
-	if(len[i - 2] != 'b')
-		exit(1);
+		exit (1);
+	if (len[i - 2] != 'b')
+		exit (1);
 }
 
-void check_items(t_savage *criminal, int y, int x)
+void	check_items(t_savage *criminal, int y, int x)
 {
-	int i;
+	int	i;
 	int	j;
 
 	i = 0;
@@ -169,55 +169,74 @@ void check_items(t_savage *criminal, int y, int x)
 		j = 0;
 	}
 	if (criminal->p == 0)
-	ft_printf("makaynche player");
+	{
+		ft_printf("ERROR : makaynche player\n");
+		exit (1);
+	}
+	if (criminal->p > 1)
+	{
+		ft_printf("ERROR : bzaf dyal player\n");
+		exit (1);
+	}
 	if (criminal->c == 0)
-	ft_printf("makaynche coins");
+	{
+		ft_printf("ERROR : makaynche coins\n");
+		exit (1);
+	}
 	if (criminal->e == 0)
-	ft_printf("makayche exit");
+	{
+		ft_printf("ERROR : makaynche exit\n");
+		exit (1);
+	}
+	if (criminal->e > 1)
+	{
+		ft_printf("ERROR : bzaf dyal exit\n");
+		exit (1);
+	}
 }
 
-void check_len(t_savage *criminal, int y, int x)
+void	check_len(t_savage *criminal, int y, int x)
 {
 	int	i;
 
 	i = 0;
 	while (i != y)
 	{
-		if (x != ft_strlen(criminal->map[i])){
-		ft_printf("tol maci hwa hadak");
-			exit(1);
+		if (x != ft_strlen(criminal->map[i]))
+		{
+			ft_printf("ERROR : tol maci hwa hadak\n");
+			exit (1);
 		}
 		i++;
 	}
 }
 
-void check_num(t_savage *criminal, int y, int x)
+void	check_num(t_savage *criminal, int y, int x)
 {
-	int i;
-
+	int	i;
 
 	i = 0;
-	while(i != x)
+	while (i != x)
 	{
-		if(criminal->map[0][i] != '1')
+		if (criminal->map[0][i] != '1')
 		{
-			// ft_printf("maxi 1\n");
-			exit(1);
+			ft_printf("ERROR : maxi 1\n");
+			exit (1);
 		}
-		if(criminal->map[y - 1][i] != '1')
+		if (criminal->map[y - 1][i] != '1')
 		{
-			// ft_printf("maxi 1\n");
-			exit(1);
+			ft_printf("ERROR : maxi 1\n");
+			exit (1);
 		}
 		i++;
 	}
 	i = 0;
 	while (i != y)
 	{
-		if(criminal->map[i][0] != '1' || criminal->map[i][x - 1] != '1')
+		if (criminal->map[i][0] != '1' || criminal->map[i][x - 1] != '1')
 		{
-			// ft_printf("machi 1\n");
-			exit(1);
+			ft_printf("ERROR : machi 1\n");
+			exit (1);
 		}
 		i++;
 	}
@@ -225,28 +244,31 @@ void check_num(t_savage *criminal, int y, int x)
 
 void  calyx(int *y, int *x, int fd)
 {
-	int i = 0;
+	int		i;
 	char	*str;
 
+	i = 0;
 	while(i != 10)
 	{
 		str = get_next_line(fd);
-		if(str == NULL)
+		if (str == NULL)
 			break ;
-		if(str != NULL)
+		if (str != NULL)
 			(*x) = ft_strlen(str);
 		(*y)++;
+		if (x == y)
+		exit (1);
 	}
-	close(fd);
+	close (fd);
 
 }
 
-void reader(t_savage *criminal, int fd)
+void	reader(t_savage *criminal, int fd)
 {
-    char *str = get_next_line(fd);
+    char	*str = get_next_line(fd);
 	criminal->tol = ft_strlen(str)-1;
-    char *twile = malloc(1);
-    while(str)
+    char	*twile = malloc(1);
+    while (str)
     {
         twile = ft_strjoin_get(twile, str);
 		criminal->lines++;
@@ -256,11 +278,11 @@ void reader(t_savage *criminal, int fd)
     criminal->map = ft_split(twile, '\n');
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    t_savage criminal;
-	int		x;
-	int		y;
+    t_savage	criminal;
+	int			x;
+	int			y;
 
 	x = 0;
 	y = 0;
@@ -351,66 +373,69 @@ int main(int ac, char **av)
 
 // -------------------------graphics--------------------------------
 
-int ft_exit()
+int	ft_exit()
 {
 	exit (0);
 	return (0);
 }
-void initialisation(t_savage *criminal){
+void	initialisation(t_savage *criminal)
+{
+	int	img_width;
+	int	img_height;
 
-	int		img_width;
-	int		img_height;
 	criminal->mlx = mlx_init();
-	criminal->win = mlx_new_window(criminal->mlx,criminal->x*32,criminal->y*32,"lo3ba l3ajiba");
-	// ft_printf("q= %d qq = %d\n",criminal->x,criminal->y);
+	criminal->win = mlx_new_window(criminal->mlx, criminal->x * 32, criminal->y * 32, "lo3ba l3ajiba");
 	criminal->wall = "./wall.xpm";
 	criminal->coin = "./coin.xpm";
 	criminal->player = "./player.xpm";
 	criminal->floor = "./floor.xpm";
 	criminal->door = "./door.xpm";
-	criminal->imgwall = mlx_xpm_file_to_image(criminal->mlx,criminal->wall,&criminal->width,&criminal->height);
-	criminal->imgcoin = mlx_xpm_file_to_image(criminal->mlx,criminal->coin,&criminal->width,&criminal->height);
-	criminal->imgplayer = mlx_xpm_file_to_image(criminal->mlx,criminal->player,&criminal->width,&criminal->height);
-	criminal->imgfloor = mlx_xpm_file_to_image(criminal->mlx,criminal->floor,&criminal->width,&criminal->height);
-	criminal->imgdoor = mlx_xpm_file_to_image(criminal->mlx,criminal->door,&criminal->width,&criminal->height);
+	criminal->imgwall = mlx_xpm_file_to_image(criminal->mlx, criminal->wall, &criminal->width,& criminal->height);
+	criminal->imgcoin = mlx_xpm_file_to_image(criminal->mlx, criminal->coin, &criminal->width, &criminal->height);
+	criminal->imgplayer = mlx_xpm_file_to_image(criminal->mlx, criminal->player, &criminal->width, &criminal->height);
+	criminal->imgfloor = mlx_xpm_file_to_image(criminal->mlx, criminal->floor, &criminal->width, &criminal->height);
+	criminal->imgdoor = mlx_xpm_file_to_image(criminal->mlx, criminal->door, &criminal->width, &criminal->height);
 	ressam(criminal);
 	mlx_hook(criminal->win, 2, 0, print_mouves, criminal);
 	mlx_hook(criminal->win, 17, 0, ft_exit, criminal);
 	mlx_loop(criminal->mlx);
 }
 
-void ressam(t_savage *criminal){
+void	ressam(t_savage *criminal)
+{
 
-	int x = 0;
-	int y = 0;
+	int	x;
+	int	y;
 
-
-	while (y < criminal->y){
+	x = 0;
+	y = 0;
+	while (y < criminal->y)
+	{
 		while (x < criminal->x)
 		{
 			if (criminal->map[y][x]== '1')
 			{
-				mlx_put_image_to_window(criminal->mlx,criminal->win,criminal->imgwall,x*32,y*32);
+				mlx_put_image_to_window(criminal->mlx, criminal->win, criminal->imgwall, x * 32, y * 32);
 			}
-			if (criminal->map[y][x]== '0' ||criminal->map[y][x]== 'E' ||criminal->map[y][x]== 'P'||criminal->map[y][x]== 'C')
+			if (criminal->map[y][x] == '0' || criminal->map[y][x] == 'E' || criminal->map[y][x] == 'P'|| criminal->map[y][x] == 'C')
 			{
-				mlx_put_image_to_window(criminal->mlx,criminal->win,criminal->imgfloor,x*32,y*32);
+				mlx_put_image_to_window(criminal->mlx, criminal->win, criminal->imgfloor, x * 32, y * 32);
 			}
-			if (criminal->map[y][x]== 'E')
+			if (criminal->map[y][x] == 'E')
 			{
-				mlx_put_image_to_window(criminal->mlx,criminal->win,criminal->imgdoor,x*32,y*32);
+				mlx_put_image_to_window(criminal->mlx, criminal->win, criminal->imgdoor, x * 32, y * 32);
 			}
-			if (criminal->map[y][x]== 'P')
+			if (criminal->map[y][x] == 'P')
 			{
-				mlx_put_image_to_window(criminal->mlx,criminal->win,criminal->imgplayer,x*32,y*32);
+				mlx_put_image_to_window(criminal->mlx, criminal->win, criminal->imgplayer, x * 32, y * 32);
 			}
-			if (criminal->map[y][x]== 'C')
+			if (criminal->map[y][x] == 'C')
 			{
-				mlx_put_image_to_window(criminal->mlx,criminal->win,criminal->imgcoin,x*32,y*32);
+				mlx_put_image_to_window(criminal->mlx, criminal->win, criminal->imgcoin, x * 32, y * 32);
 			}
 			x++;
 		}
-		x=0;
+		x = 0;
 		y++;
 	}
 }
