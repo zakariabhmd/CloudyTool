@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/06 00:15:06 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:35:45 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,7 +261,7 @@ int main(int ac, char **av)
     t_savage criminal;
 	int		x;
 	int		y;
-	
+
 	x = 0;
 	y = 0;
 	check_map(av[1]);
@@ -351,6 +351,11 @@ int main(int ac, char **av)
 
 // -------------------------graphics--------------------------------
 
+int ft_exit()
+{
+	exit (0);
+	return (0);
+}
 void initialisation(t_savage *criminal){
 
 	int		img_width;
@@ -370,6 +375,7 @@ void initialisation(t_savage *criminal){
 	criminal->imgdoor = mlx_xpm_file_to_image(criminal->mlx,criminal->door,&criminal->width,&criminal->height);
 	ressam(criminal);
 	mlx_hook(criminal->win, 2, 0, print_mouves, criminal);
+	mlx_hook(criminal->win, 17, 0, ft_exit, criminal);
 	mlx_loop(criminal->mlx);
 }
 
