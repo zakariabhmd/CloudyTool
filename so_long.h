@@ -1,11 +1,11 @@
 #ifndef SO_LONG_H
-#define SO_LONG_H
+# define SO_LONG_H
 
-#include "./libft/libft.h"
-#include "./get_next_line/get_next_line.h"
-#include "./ft_printf/ft_printf.h"
-#include <fcntl.h>
-#include <mlx.h>
+# include "./libft/libft.h"
+# include "./get_next_line/get_next_line.h"
+# include "./ft_printf/ft_printf.h"
+# include <fcntl.h>
+# include <mlx.h>
 
 typedef struct s_savage
 {
@@ -46,6 +46,9 @@ t_dim get_player_position(t_savage *criminal);
 char get_position_in_map(t_savage *criminal, t_dim *wanted_dim);
 void modify_map(t_savage *criminal, t_dim *position, char with_what);
 int print_mouves(int k, t_savage *criminal);
-
+void	initialisation(t_savage *criminal);
+void	ressam(t_savage *criminal);
+void	help(t_savage *criminal, int x, int y);
+void	in2(t_savage *criminal);
 
 #endif
