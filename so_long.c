@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/07 01:09:52 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/08 05:44:35 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	check_error(t_savage *criminal, int y, int x)
 	{
 		while (j != x - 1)
 		{
-			if (criminal->map[i][j] != '1' && criminal->map[i][j] != '0' && criminal->map[i][j] != 'P' && criminal->map[i][j] != 'E' && criminal->map[i][j] != 'C')
+			if (criminal->map[i][j] != '1' && criminal->map[i][j] != '0' \
+			&& criminal->map[i][j] != 'P' && criminal->map[i][j] != 'E' \
+			&& criminal->map[i][j] != 'C')
 			{
 				ft_printf("ERROR : makaynche 1 || 0 || P || E || C");
 				exit(1);
@@ -46,6 +48,40 @@ void	check_map(char *len)
 		exit (1);
 	if (len[i - 2] != 'b')
 		exit (1);
+}
+
+void	check_items_help(t_savage *criminal)
+{
+	if (criminal->p == 0)
+	{
+		ft_printf("ERROR : makaynche player\n");
+		exit (1);
+	}
+	if (criminal->p > 1)
+	{
+		ft_printf("ERROR : bzaf dyal player\n");
+		exit (1);
+	}
+	if (criminal->c == 0)
+	{
+		ft_printf("ERROR : makaynche coins\n");
+		exit (1);
+	}
+	check_items_help2(criminal);
+}
+
+void	check_items_help2(t_savage *criminal)
+{
+	if (criminal->e == 0)
+	{
+		ft_printf("ERROR : makaynche exit\n");
+		exit (1);
+	}
+	if (criminal->e > 1)
+	{
+		ft_printf("ERROR : bzaf dyal exit\n");
+		exit (1);
+	}
 }
 
 void	check_items(t_savage *criminal, int y, int x)
@@ -73,31 +109,7 @@ void	check_items(t_savage *criminal, int y, int x)
 		i++;
 		j = 0;
 	}
-	if (criminal->p == 0)
-	{
-		ft_printf("ERROR : makaynche player\n");
-		exit (1);
-	}
-	if (criminal->p > 1)
-	{
-		ft_printf("ERROR : bzaf dyal player\n");
-		exit (1);
-	}
-	if (criminal->c == 0)
-	{
-		ft_printf("ERROR : makaynche coins\n");
-		exit (1);
-	}
-	if (criminal->e == 0)
-	{
-		ft_printf("ERROR : makaynche exit\n");
-		exit (1);
-	}
-	if (criminal->e > 1)
-	{
-		ft_printf("ERROR : bzaf dyal exit\n");
-		exit (1);
-	}
+	check_items_help(criminal);
 }
 
 void	check_len(t_savage *criminal, int y, int x)
@@ -161,8 +173,6 @@ void	calyx(int *y, int *x, int fd)
 		if (str != NULL)
 			(*x) = ft_strlen(str);
 			(*y)++;
-		if (x == y)
-		exit (1);
 	}
 	close (fd);
 }
@@ -186,17 +196,41 @@ int	main(int ac, char **av)
 	t_savage	criminal;
 	int			x;
 	int			y;
+	int			fd;
+	int			fd1;
+	int			fd2;
 
 	x = 0;
 	y = 0;
 	check_map(av[1]);
-	int fd = open(av[1], O_RDONLY);
+	fd = open(av[1], O_RDONLY);
 	calyx(&criminal.y, &criminal.x, fd);
-	int fd2 = open(av[1], O_RDONLY);
-	reader(&criminal, fd);
+	fd2 = open(av[1], O_RDONLY);
+	reader(&criminal, fd2);
+	fd1 = open(av[1], O_RDONLY);
+	// reader2(&criminal, fd);
+	// ft_printf("%s\n", criminal.map1[0]);
+	// ft_printf("%s\n", criminal.map1[1]);
+	// ft_printf("%s\n", criminal.map1[2]);
+	// ft_printf("%s\n", criminal.map1[3]);
+	// ft_printf("%s\n", criminal.map1[4]);
+	// exit(0);
+	// valid_path(&criminal, criminal.y, criminal.x);
 	check_len(&criminal, criminal.y, criminal.x);
 	check_num(&criminal, criminal.y, criminal.x);
 	check_items(&criminal, criminal.y, criminal.x);
 	check_error(&criminal, criminal.y, criminal.x);
 	initialisation(&criminal);
+}
+
+void	reader2(t_savage *criminal, int fd)
+{
+	char	*str = get_next_line(fd);
+	char	*twile = malloc(1);
+	while (str)
+	{
+		twile = ft_strjoin_get(twile, str);
+		str = get_next_line(fd);
+	}
+	criminal->map1 = ft_split(twile, '\n');
 }

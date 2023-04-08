@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 06:43:38 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/06 00:32:04 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/07 05:59:45 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,6 @@ int print_mouves(int k, t_savage *criminal)
 		// ft_printf("right\n");
 	}
 	if (k == 53)
-	exit (1);
+	exit (0);
 	return (0);
 }

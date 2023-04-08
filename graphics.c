@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 08:37:40 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/07 05:55:49 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:42:14 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,6 @@ void	initialisation(t_savage *criminal)
 	criminal->player = "./player.xpm";
 	criminal->floor = "./floor.xpm";
 	criminal->door = "./door.xpm";
-	// criminal->imgwall = mlx_xpm_file_to_image(criminal->mlx, \
-	// criminal->wall, &criminal->width, &criminal->height);
-	// criminal->imgcoin = mlx_xpm_file_to_image(criminal->mlx, \
-	// criminal->coin, &criminal->width, &criminal->height);
-	// criminal->imgplayer = mlx_xpm_file_to_image(criminal->mlx, \
-	// criminal->player, &criminal->width, &criminal->height);
-	// criminal->imgfloor = mlx_xpm_file_to_image(criminal->mlx, \
-	// criminal->floor, &criminal->width, &criminal->height);
-	// criminal->imgdoor = mlx_xpm_file_to_image(criminal->mlx, \
-	// criminal->door, &criminal->width, &criminal->height);
 	in2(criminal);
 	ressam(criminal);
 	mlx_hook(criminal->win, 2, 0, print_mouves, criminal);
