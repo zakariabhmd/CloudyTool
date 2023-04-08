@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/08 05:44:35 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/08 22:09:16 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_error(t_savage *criminal, int y, int x)
 	j = 0;
 	while (i != y)
 	{
-		while (j != x - 1)
+		while (j != x)
 		{
 			if (criminal->map[i][j] != '1' && criminal->map[i][j] != '0' \
 			&& criminal->map[i][j] != 'P' && criminal->map[i][j] != 'E' \
@@ -165,7 +165,7 @@ void	calyx(int *y, int *x, int fd)
 	char	*str;
 
 	i = 0;
-	while (i != 10)
+	while (1)
 	{
 		str = get_next_line(fd);
 		if (str == NULL)
@@ -208,13 +208,7 @@ int	main(int ac, char **av)
 	fd2 = open(av[1], O_RDONLY);
 	reader(&criminal, fd2);
 	fd1 = open(av[1], O_RDONLY);
-	// reader2(&criminal, fd);
-	// ft_printf("%s\n", criminal.map1[0]);
-	// ft_printf("%s\n", criminal.map1[1]);
-	// ft_printf("%s\n", criminal.map1[2]);
-	// ft_printf("%s\n", criminal.map1[3]);
-	// ft_printf("%s\n", criminal.map1[4]);
-	// exit(0);
+	reader2(&criminal, fd);
 	// valid_path(&criminal, criminal.y, criminal.x);
 	check_len(&criminal, criminal.y, criminal.x);
 	check_num(&criminal, criminal.y, criminal.x);
