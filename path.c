@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:40:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/08 22:08:42 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/09 03:14:54 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,31 @@ void valid_path(t_savage *criminal, int y, int x)
 	int i;
 	int j;
 
-	i = 0;
 	j = 0;
-	ft_printf("%c\n", criminal->map1[i][j]);
-	printf("%d \n", y);
+	i = 0;
 	while (i != y)
 	{
-		ft_printf("OK\n");
-		while (criminal->map1[i][j])
+		while (j != x)
 		{
-			if (criminal->map1[i - 1][j] != 'E' && criminal->map1[i - 1][j] != '1')
-				criminal->map1[i - 1][j] = 'P';
-			if (criminal->map1[i + 1][j] != 'E' && criminal->map1[i + 1][j] != '1')
-				criminal->map1[i + 1][j] = 'P';
-			if (criminal->map1[i][j - 1] != 'E' && criminal->map1[i][j - 1] != '1')
-				criminal->map1[i][j - 1] = 'P';
-			if (criminal->map1[i][j + 1] != 'E' && criminal->map1[i][j + 1] != '1')
-				criminal->map1[i][j + 1] = 'P';
+			if (criminal->map1[i][j] == 'P')
+			{
+				if (criminal->map1[i][j - 1] != 'E' && criminal->map1[i][j - 1] != '1')
+					criminal->map1[i][j - 1] = 'P';
+				if (criminal->map1[i][j + 1] != 'E' && criminal->map1[i][j + 1] != '1')
+					criminal->map1[i][j + 1] = 'P';
+				if (criminal->map1[i + 1][j] != 'E' && criminal->map1[i + 1][j] != '1')
+					criminal->map1[i + 1][j] = 'P';
+				if (criminal->map1[i - 1][j] != 'E' && criminal->map1[i - 1][j] != '1')
+					criminal->map1[i - 1][j] = 'P';
+			}
 			j++;
 		}
-		i++;
 		j = 0;
+		i++;
 	}
 	check_valid_path(criminal, y, x);
 	exit_valid_path(criminal, y, x);
+	printf("okkkkkkay\n");
 }
 
 void check_valid_path(t_savage *criminal, int y, int x)
@@ -50,9 +51,9 @@ void check_valid_path(t_savage *criminal, int y, int x)
 
 	i = 0;
 	j = 0;
-	while (i != y)
+	while (i < criminal->y)
 	{
-		while (j != x)
+		while (j < criminal->x)
 		{
 			if (criminal->map1[i][j] == 'C')
 				exit(1);
@@ -78,6 +79,7 @@ void exit_valid_path(t_savage *criminal, int y, int x)
 		{
 			if (criminal->map1[i][j] == 'E')
 			{
+				printf("okkkkkkay\n");
 				if (criminal->map1[i - 1][j] == 'P')
 					e++;
 				if (criminal->map1[i + 1][j] == 'P')
@@ -86,11 +88,11 @@ void exit_valid_path(t_savage *criminal, int y, int x)
 					e++;
 				if (criminal->map1[i][j - 1] == 'P')
 					e++;
-				j++;
 			}
-			i++;
-			j = 0;
+			j++;
 		}
+		j = 0;
+		i++;
 	}
 	if (e == 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/08 22:09:16 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/09 02:53:07 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,8 @@ void	reader(t_savage *criminal, int fd)
 		str = get_next_line(fd);
 	}
 	criminal->map = ft_split(twile, '\n');
+	criminal->map1 = ft_split(twile, '\n');
+	close (fd);
 }
 
 int	main(int ac, char **av)
@@ -197,8 +199,8 @@ int	main(int ac, char **av)
 	int			x;
 	int			y;
 	int			fd;
-	int			fd1;
 	int			fd2;
+	int			fd3;
 
 	x = 0;
 	y = 0;
@@ -207,9 +209,9 @@ int	main(int ac, char **av)
 	calyx(&criminal.y, &criminal.x, fd);
 	fd2 = open(av[1], O_RDONLY);
 	reader(&criminal, fd2);
-	fd1 = open(av[1], O_RDONLY);
-	reader2(&criminal, fd);
-	// valid_path(&criminal, criminal.y, criminal.x);
+	fd3 = open(av[1], O_RDONLY);
+	reader(&criminal, fd3);
+	valid_path(&criminal, criminal.y, criminal.x);
 	check_len(&criminal, criminal.y, criminal.x);
 	check_num(&criminal, criminal.y, criminal.x);
 	check_items(&criminal, criminal.y, criminal.x);
@@ -217,14 +219,3 @@ int	main(int ac, char **av)
 	initialisation(&criminal);
 }
 
-void	reader2(t_savage *criminal, int fd)
-{
-	char	*str = get_next_line(fd);
-	char	*twile = malloc(1);
-	while (str)
-	{
-		twile = ft_strjoin_get(twile, str);
-		str = get_next_line(fd);
-	}
-	criminal->map1 = ft_split(twile, '\n');
-}
