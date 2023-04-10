@@ -6,11 +6,24 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/09 02:53:07 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:43:09 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	check_new(t_savage *criminal, int y, int x)
+{
+	int	i;
+
+	i = 0;
+	while(i != y)
+	{
+		if (criminal->map[i][0] == '\n' || criminal->map[i][0] == '\0')
+		exit (1);
+		i++;
+	}
+}
 
 void	check_error(t_savage *criminal, int y, int x)
 {
@@ -211,6 +224,7 @@ int	main(int ac, char **av)
 	reader(&criminal, fd2);
 	fd3 = open(av[1], O_RDONLY);
 	reader(&criminal, fd3);
+	check_new(&criminal, criminal.y, criminal.x);
 	valid_path(&criminal, criminal.y, criminal.x);
 	check_len(&criminal, criminal.y, criminal.x);
 	check_num(&criminal, criminal.y, criminal.x);

@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 06:43:38 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/07 05:59:45 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/09 04:22:48 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int print_mouves(int k, t_savage *criminal)
 {
-	// printf("%s\n", criminal->map[0]);
 	t_dim player_pos = get_player_position(criminal);
 	t_dim wanted_pos;
 	char next_pos;
@@ -39,7 +38,6 @@ int print_mouves(int k, t_savage *criminal)
 		}
 		if (next_pos == 'E' && criminal->c == 0)
 			exit(0);
-		// ft_printf("up\n");
 	}
 	if (k == 0)
 	{
@@ -61,7 +59,6 @@ int print_mouves(int k, t_savage *criminal)
 		}
 		if (next_pos == 'E' && criminal->c == 0)
 			exit(0);
-		// ft_printf("left\n");
 	}
 	if (k == 1)
 	{
@@ -83,7 +80,7 @@ int print_mouves(int k, t_savage *criminal)
 		}
 		if (next_pos == 'E' && criminal->c == 0)
 			exit(0);
-		// ft_printf("down\n");
+
 	}
 	if (k == 2)
 	{

@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 06:41:17 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/09 03:15:48 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/09 23:21:52 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ void	check_items_help2(t_savage *criminal);
 void	valid_path(t_savage *criminal, int y, int x);
 void	check_valid_path(t_savage *criminal, int y, int x);
 void	exit_valid_path(t_savage *criminal, int y, int x);
+void	hooks_help1(t_savage *criminal, t_dim wanted_pos, t_dim player_pos, char next_pos);
+void	valid_path1(t_savage *criminal, int i, int j);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 08:37:40 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/08 02:42:14 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/09 21:40:08 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,27 @@ void	ressam(t_savage *criminal)
 	{
 		while (x < criminal->x)
 		{
-				if (criminal->map[y][x] == '1')
-	{
-		mlx_put_image_to_window(criminal->mlx, criminal->win, \
-		criminal->imgwall, x * 32, y * 32);
-	}
-	if (criminal->map[y][x] == '0' || criminal->map[y][x] == 'E' \
-	|| criminal->map[y][x] == 'P' || criminal->map[y][x] == 'C')
-	{
-		mlx_put_image_to_window(criminal->mlx, criminal->win, \
-		criminal->imgfloor, x * 32, y * 32);
-	}
-	if (criminal->map[y][x] == 'E')
-	{
-		mlx_put_image_to_window(criminal->mlx, \
-		criminal->win, criminal->imgdoor, x * 32, y * 32);
-	}
-	if (criminal->map[y][x] == 'P')
-	{
-		mlx_put_image_to_window(criminal->mlx, \
-		criminal->win, criminal->imgplayer, x * 32, y * 32);
-	}
+			if (criminal->map[y][x] == '1')
+			{
+				mlx_put_image_to_window(criminal->mlx, criminal->win, \
+				criminal->imgwall, x * 32, y * 32);
+			}
+			if (criminal->map[y][x] == '0' || criminal->map[y][x] == 'E' \
+			|| criminal->map[y][x] == 'P' || criminal->map[y][x] == 'C')
+			{
+				mlx_put_image_to_window(criminal->mlx, criminal->win, \
+				criminal->imgfloor, x * 32, y * 32);
+			}
+			if (criminal->map[y][x] == 'E')
+			{
+				mlx_put_image_to_window(criminal->mlx, \
+				criminal->win, criminal->imgdoor, x * 32, y * 32);
+			}
+			if (criminal->map[y][x] == 'P')
+			{
+				mlx_put_image_to_window(criminal->mlx, \
+				criminal->win, criminal->imgplayer, x * 32, y * 32);
+			}
 			if (criminal->map[y][x] == 'C')
 			{
 				mlx_put_image_to_window(criminal->mlx, \
