@@ -6,17 +6,11 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 08:37:40 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/10 02:17:46 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/10 04:18:22 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	ft_exit(void)
-{
-	exit (0);
-	return (0);
-}
 
 void	initialisation(t_savage *criminal)
 {

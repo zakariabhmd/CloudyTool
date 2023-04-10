@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 06:41:17 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/10 02:44:16 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/10 04:32:20 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,11 @@ void	valid_path(t_savage *criminal, int y, int x);
 void	valid_path1(t_savage *criminal, int i, int j);
 void	check_valid_path(t_savage *criminal, int y, int x);
 void	exit_valid_path(t_savage *criminal, int y, int x);
-void	exit_path(int e);
+//--------------map-----------------
+void	check_items_help(t_savage *criminal);
+void	check_items_help2(t_savage *criminal);
+void	check_items(t_savage *criminal, int y, int x);
+void	check_len(t_savage *criminal, int y, int x);
+void	check_num(t_savage *criminal, int y, int x);
 
 #endif
