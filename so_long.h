@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 06:41:17 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/09 23:21:52 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/10 02:44:16 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,38 @@ typedef struct s_dim
 	int	y;
 }t_dim;
 
-void	initialisation(t_savage *criminal);
-void	ressam(t_savage *criminal);
 t_dim	get_player_position(t_savage *criminal);
 char	get_position_in_map(t_savage *criminal, t_dim *wanted_dim);
 void	modify_map(t_savage *criminal, t_dim *position, char with_what);
-int		print_mouves(int k, t_savage *criminal);
 void	initialisation(t_savage *criminal);
 void	ressam(t_savage *criminal);
 void	help(t_savage *criminal, int x, int y);
-void	in2(t_savage *criminal);
 void	check_items_help2(t_savage *criminal);
+void	hooks_help1(t_savage *criminal, t_dim wanted_pos, \
+	t_dim player_pos, char next_pos);
+int		ft_exit(void);
+// --------------hooks----------------
+void	up(t_savage *criminal, t_dim player_pos, \
+	t_dim wanted_pos, char next_pos);
+void	left(t_savage *criminal, t_dim player_pos, \
+	t_dim wanted_pos, char next_pos);
+void	down(t_savage *criminal, t_dim player_pos, \
+	t_dim wanted_pos, char next_pos);
+void	right(t_savage *criminal, t_dim player_pos, \
+	t_dim wanted_pos, char next_pos);
+int		print_mouves(int k, t_savage *criminal);
+// ----------graphics---------------
+void	initialisation(t_savage *criminal);
+void	ressam(t_savage *criminal);
+void	in2(t_savage *criminal);
+void	help1(t_savage *criminal, int y, int x);
+void	help2(t_savage *criminal, int y, int x);
+int		ft_exit(void);
+// ------------path------------------
 void	valid_path(t_savage *criminal, int y, int x);
+void	valid_path1(t_savage *criminal, int i, int j);
 void	check_valid_path(t_savage *criminal, int y, int x);
 void	exit_valid_path(t_savage *criminal, int y, int x);
-void	hooks_help1(t_savage *criminal, t_dim wanted_pos, t_dim player_pos, char next_pos);
-void	valid_path1(t_savage *criminal, int i, int j);
+void	exit_path(int e);
 
 #endif

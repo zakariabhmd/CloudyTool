@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 08:37:40 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/09 21:40:08 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/10 02:17:46 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,32 +46,8 @@ void	ressam(t_savage *criminal)
 	{
 		while (x < criminal->x)
 		{
-			if (criminal->map[y][x] == '1')
-			{
-				mlx_put_image_to_window(criminal->mlx, criminal->win, \
-				criminal->imgwall, x * 32, y * 32);
-			}
-			if (criminal->map[y][x] == '0' || criminal->map[y][x] == 'E' \
-			|| criminal->map[y][x] == 'P' || criminal->map[y][x] == 'C')
-			{
-				mlx_put_image_to_window(criminal->mlx, criminal->win, \
-				criminal->imgfloor, x * 32, y * 32);
-			}
-			if (criminal->map[y][x] == 'E')
-			{
-				mlx_put_image_to_window(criminal->mlx, \
-				criminal->win, criminal->imgdoor, x * 32, y * 32);
-			}
-			if (criminal->map[y][x] == 'P')
-			{
-				mlx_put_image_to_window(criminal->mlx, \
-				criminal->win, criminal->imgplayer, x * 32, y * 32);
-			}
-			if (criminal->map[y][x] == 'C')
-			{
-				mlx_put_image_to_window(criminal->mlx, \
-				criminal->win, criminal->imgcoin, x * 32, y * 32);
-			}
+			help1(criminal, y, x);
+			help2(criminal, y, x);
 			x++;
 		}
 		x = 0;
@@ -91,4 +67,38 @@ void	in2(t_savage *criminal)
 	criminal->floor, &criminal->width, &criminal->height);
 	criminal->imgdoor = mlx_xpm_file_to_image(criminal->mlx, \
 	criminal->door, &criminal->width, &criminal->height);
+}
+
+void	help1(t_savage *criminal, int y, int x)
+{
+	if (criminal->map[y][x] == '1')
+	{
+		mlx_put_image_to_window(criminal->mlx, criminal->win, \
+		criminal->imgwall, x * 32, y * 32);
+	}
+	if (criminal->map[y][x] == '0' || criminal->map[y][x] == 'E' \
+	|| criminal->map[y][x] == 'P' || criminal->map[y][x] == 'C')
+	{
+		mlx_put_image_to_window(criminal->mlx, criminal->win, \
+		criminal->imgfloor, x * 32, y * 32);
+	}
+	if (criminal->map[y][x] == 'E')
+	{
+		mlx_put_image_to_window(criminal->mlx, \
+		criminal->win, criminal->imgdoor, x * 32, y * 32);
+	}
+}
+
+void	help2(t_savage *criminal, int y, int x)
+{
+	if (criminal->map[y][x] == 'P')
+	{
+		mlx_put_image_to_window(criminal->mlx, \
+		criminal->win, criminal->imgplayer, x * 32, y * 32);
+	}
+	if (criminal->map[y][x] == 'C')
+	{
+		mlx_put_image_to_window(criminal->mlx, \
+		criminal->win, criminal->imgcoin, x * 32, y * 32);
+	}
 }

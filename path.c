@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:40:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/10 00:36:32 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/10 02:33:01 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ void	check_valid_path(t_savage *criminal, int y, int x)
 		while (j < criminal->x)
 		{
 			if (criminal->map1[i][j] == 'C')
+			{
+				ft_printf("invalid path\n");
 				exit (1);
+			}
 			j++;
 		}
 		i++;
@@ -87,7 +90,14 @@ void	exit_valid_path(t_savage *criminal, int y, int x)
 		{
 			if (criminal->map1[i][j] == 'E')
 			{
-
+				if (criminal->map1[i - 1][j] == 'P')
+					e++;
+				if (criminal->map1[i + 1][j] == 'P')
+					e++;
+				if (criminal->map1[i][j + 1] == 'P')
+					e++;
+				if (criminal->map1[i][j - 1] == 'P')
+					e++;
 			}
 			j++;
 		}
@@ -100,5 +110,3 @@ void	exit_valid_path(t_savage *criminal, int y, int x)
 		exit(1);
 	}
 }
-
-void	exit_valid_path(t_savage)
