@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/10 04:28:43 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/11 03:20:53 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	check_map(char *len)
 		exit (1);
 	if (len[i - 2] != 'b')
 		exit (1);
+	if (len[i - 3] != '.')
+		exit (1);
 }
 
 void	calyx(int *y, int *x, int fd)
@@ -70,13 +72,14 @@ void	calyx(int *y, int *x, int fd)
 
 void	reader(t_savage *criminal, int fd)
 {
-	char	*str = get_next_line(fd);
-	criminal->tol = ft_strlen(str)-1;
-	char	*twile = malloc(1);
+	char	*str;
+	char	*twile;
+
+	str = get_next_line(fd);
+	twile = malloc(1);
 	while (str)
 	{
 		twile = ft_strjoin_get(twile, str);
-		criminal->lines++;
 		str = get_next_line(fd);
 	}
 	criminal->map = ft_split(twile, '\n');
@@ -87,14 +90,15 @@ void	reader(t_savage *criminal, int fd)
 int	main(int ac, char **av)
 {
 	t_savage	criminal;
-	int			x;
-	int			y;
 	int			fd;
 	int			fd2;
 	int			fd3;
 
-	x = 0;
-	y = 0;
+	if (ac == 1)
+	{
+		printf("chi haja machi hya hadik\n");
+		exit (1);
+	}
 	check_map(av[1]);
 	fd = open(av[1], O_RDONLY);
 	calyx(&criminal.y, &criminal.x, fd);
@@ -102,11 +106,6 @@ int	main(int ac, char **av)
 	reader(&criminal, fd2);
 	fd3 = open(av[1], O_RDONLY);
 	reader(&criminal, fd3);
-	valid_path(&criminal, criminal.y, criminal.x);
-	check_len(&criminal, criminal.y, criminal.x);
-	check_num(&criminal, criminal.y, criminal.x);
-	check_items(&criminal, criminal.y, criminal.x);
-	check_error(&criminal, criminal.y, criminal.x);
+	main2(&criminal, criminal.y, criminal.x);
 	initialisation(&criminal);
 }
-

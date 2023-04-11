@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 02:37:30 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/10 02:40:29 by zbabahmi         ###   ########.fr       */
+/*   Created: 2023/04/11 00:18:01 by zbabahmi          #+#    #+#             */
+/*   Updated: 2023/04/11 01:31:53 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,33 +90,11 @@ void	check_len(t_savage *criminal, int y, int x)
 	}
 }
 
-void	check_num(t_savage *criminal, int y, int x)
+void	main2(t_savage *criminal, int y, int x)
 {
-	int	i;
-
-	i = 0;
-	while (i != x)
-	{
-		if (criminal->map[0][i] != '1')
-		{
-			ft_printf("ERROR : maxi 1\n");
-			exit (1);
-		}
-		if (criminal->map[y - 1][i] != '1')
-		{
-			ft_printf("ERROR : maxi 1\n");
-			exit (1);
-		}
-		i++;
-	}
-	i = 0;
-	while (i != y)
-	{
-		if (criminal->map[i][0] != '1' || criminal->map[i][x - 1] != '1')
-		{
-			ft_printf("ERROR : machi 1\n");
-			exit (1);
-		}
-		i++;
-	}
+	check_len(criminal, y, x);
+	check_num(criminal, y, x);
+	check_items(criminal, y, x);
+	check_error(criminal, y, x);
+	valid_path(criminal, y, x);
 }
