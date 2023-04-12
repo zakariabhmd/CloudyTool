@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:40:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/11 01:32:15 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/11 04:29:01 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,22 @@ void	check_valid_path(t_savage *criminal, int y, int x)
 	}
 }
 
+int	ft_help(t_savage *criminal, int i, int j, int e)
+{
+	if (criminal->map1[i][j] == 'E')
+	{
+		if (criminal->map1[i - 1][j] == 'P')
+			e++;
+		if (criminal->map1[i + 1][j] == 'P')
+			e++;
+		if (criminal->map1[i][j + 1] == 'P')
+			e++;
+		if (criminal->map1[i][j - 1] == 'P')
+			e++;
+	}
+	return (e);
+}
+
 void	exit_valid_path(t_savage *criminal, int y, int x)
 {
 	int	i;
@@ -88,17 +104,7 @@ void	exit_valid_path(t_savage *criminal, int y, int x)
 	{
 		while (j != x)
 		{
-			if (criminal->map1[i][j] == 'E')
-			{
-				if (criminal->map1[i - 1][j] == 'P')
-					e++;
-				if (criminal->map1[i + 1][j] == 'P')
-					e++;
-				if (criminal->map1[i][j + 1] == 'P')
-					e++;
-				if (criminal->map1[i][j - 1] == 'P')
-					e++;
-			}
+			e = ft_help(criminal, i, j, e);
 			j++;
 		}
 		j = 0;

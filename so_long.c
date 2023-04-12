@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/11 03:20:53 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/12 04:49:29 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,25 @@ void	check_map(char *len)
 
 	i = ft_strlen(len) - 1;
 	if (len[i] != 'r')
+	{
+		ft_printf("ERROR : chi haja machi hya hadik\n");
 		exit (1);
+	}
 	if (len[i - 1] != 'e')
+	{
+		ft_printf("ERROR : chi haja machi hya hadik\n");
 		exit (1);
+	}
 	if (len[i - 2] != 'b')
+	{
+		ft_printf("ERROR : chi haja machi hya hadik\n");
 		exit (1);
+	}
 	if (len[i - 3] != '.')
+	{
+		ft_printf("ERROR : chi haja machi hya hadik\n");
 		exit (1);
+	}
 }
 
 void	calyx(int *y, int *x, int fd)
@@ -74,7 +86,9 @@ void	reader(t_savage *criminal, int fd)
 {
 	char	*str;
 	char	*twile;
+	int		i;
 
+	i = 0;
 	str = get_next_line(fd);
 	twile = malloc(1);
 	while (str)
@@ -84,6 +98,13 @@ void	reader(t_savage *criminal, int fd)
 	}
 	criminal->map = ft_split(twile, '\n');
 	criminal->map1 = ft_split(twile, '\n');
+	while (criminal->map[i])
+		i++;
+	if (i != criminal->y)
+	{
+		ft_printf("ERROR : chi haja machi hya hadik\n");
+		exit(1);
+	}
 	close (fd);
 }
 

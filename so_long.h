@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 06:41:17 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/11 03:21:09 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/12 04:50:57 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_savage
 	char	*player;
 	char	*floor;
 	char	*door;
+	int		moves;
 }t_savage;
 
 typedef struct s_dim
@@ -69,12 +70,17 @@ void	right(t_savage *criminal, t_dim player_pos, \
 	t_dim wanted_pos, char next_pos);
 int		print_mouves(int k, t_savage *criminal);
 int		ft_exit(void);
+void	count(t_savage *criminal);
 // ----------graphics---------------
 void	initialisation(t_savage *criminal);
 void	ressam(t_savage *criminal);
 void	in2(t_savage *criminal);
 void	help1(t_savage *criminal, int y, int x);
 void	help2(t_savage *criminal, int y, int x);
+void	items_help(t_savage *criminal);
+void	items_help2(t_savage *criminal);
+void	help_rassam(t_savage *criminal, int y, int x);
+void	help_rassam2(t_savage *criminal, int y, int x);
 // ------------path------------------
 void	valid_path(t_savage *criminal, int y, int x);
 void	valid_path1(t_savage *criminal, int i, int j);
