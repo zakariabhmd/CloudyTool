@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:40:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/11 04:29:01 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/13 00:51:25 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	exit_valid_path(t_savage *criminal, int y, int x)
 	}
 	if (e == 0)
 	{
-		ft_printf("invalid path");
+		ft_printf("invalid pathhhh\n");
 		exit(1);
 	}
 }

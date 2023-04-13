@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 01:30:48 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/12 02:45:27 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/13 02:25:18 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	up(t_savage *criminal, t_dim player_pos, \
 	if (next_pos != '1')
 		count(criminal);
 	if (next_pos == 'E' && criminal->c == 0)
+	{
+		ft_printf("--------GG--------\n");
 		exit(0);
+	}
 }
 
 void	left(t_savage *criminal, t_dim player_pos, \
@@ -59,7 +62,10 @@ void	left(t_savage *criminal, t_dim player_pos, \
 	if (next_pos != '1')
 		count(criminal);
 	if (next_pos == 'E' && criminal->c == 0)
+	{
+		ft_printf("--------GG--------\n");
 		exit(0);
+	}
 }
 
 void	down(t_savage *criminal, t_dim player_pos, \
@@ -84,7 +90,10 @@ void	down(t_savage *criminal, t_dim player_pos, \
 	if (next_pos != '1')
 		count(criminal);
 	if (next_pos == 'E' && criminal->c == 0)
+	{
+		ft_printf("--------GG--------\n");
 		exit(0);
+	}
 }
 
 void	right(t_savage *criminal, t_dim player_pos, \
@@ -109,7 +118,10 @@ void	right(t_savage *criminal, t_dim player_pos, \
 	if (next_pos != '1')
 		count(criminal);
 	if (next_pos == 'E' && criminal->c == 0)
+	{
+		ft_printf("--------GG--------\n");
 		exit(0);
+	}
 }
 
 void	count(t_savage *criminal)

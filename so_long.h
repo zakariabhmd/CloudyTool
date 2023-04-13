@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 06:41:17 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/12 04:50:57 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/13 00:34:37 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,7 @@ typedef struct s_dim
 
 t_dim	get_player_position(t_savage *criminal);
 char	get_position_in_map(t_savage *criminal, t_dim *wanted_dim);
-
 void	modify_map(t_savage *criminal, t_dim *position, char with_what);
-void	initialisation(t_savage *criminal);
-void	ressam(t_savage *criminal);
-void	help(t_savage *criminal, int x, int y);
-void	check_items_help2(t_savage *criminal);
 // --------------hooks----------------
 void	up(t_savage *criminal, t_dim player_pos, \
 	t_dim wanted_pos, char next_pos);
@@ -75,8 +70,6 @@ void	count(t_savage *criminal);
 void	initialisation(t_savage *criminal);
 void	ressam(t_savage *criminal);
 void	in2(t_savage *criminal);
-void	help1(t_savage *criminal, int y, int x);
-void	help2(t_savage *criminal, int y, int x);
 void	items_help(t_savage *criminal);
 void	items_help2(t_savage *criminal);
 void	help_rassam(t_savage *criminal, int y, int x);
@@ -95,5 +88,6 @@ void	check_num(t_savage *criminal, int y, int x);
 void	main2(t_savage *criminal, int y, int x);
 void	check_error(t_savage *criminal, int y, int x);
 void	check_num_help(t_savage *criminal, int i, int y);
+void	freee(t_savage *criminal, char **arr);
 
 #endif

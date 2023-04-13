@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/12 04:49:29 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/13 02:26:59 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	calyx(int *y, int *x, int fd)
 		if (str != NULL)
 			(*x) = ft_strlen(str);
 			(*y)++;
+		free(str);
 	}
 	close (fd);
 }
@@ -94,10 +95,12 @@ void	reader(t_savage *criminal, int fd)
 	while (str)
 	{
 		twile = ft_strjoin_get(twile, str);
+		free(str);
 		str = get_next_line(fd);
 	}
 	criminal->map = ft_split(twile, '\n');
 	criminal->map1 = ft_split(twile, '\n');
+	free(twile);
 	while (criminal->map[i])
 		i++;
 	if (i != criminal->y)
@@ -105,7 +108,6 @@ void	reader(t_savage *criminal, int fd)
 		ft_printf("ERROR : chi haja machi hya hadik\n");
 		exit(1);
 	}
-	close (fd);
 }
 
 int	main(int ac, char **av)
@@ -113,7 +115,6 @@ int	main(int ac, char **av)
 	t_savage	criminal;
 	int			fd;
 	int			fd2;
-	int			fd3;
 
 	if (ac == 1)
 	{
@@ -125,8 +126,18 @@ int	main(int ac, char **av)
 	calyx(&criminal.y, &criminal.x, fd);
 	fd2 = open(av[1], O_RDONLY);
 	reader(&criminal, fd2);
-	fd3 = open(av[1], O_RDONLY);
-	reader(&criminal, fd3);
 	main2(&criminal, criminal.y, criminal.x);
 	initialisation(&criminal);
 }
+
+// void	freee(t_savage *criminal, char **arr)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < criminal->y)
+// 	{
+// 		free (arr[i]);
+// 	}
+// 	free(arr);
+// }
