@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 02:50:57 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/02/24 22:53:12 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/14 01:38:45 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*helper(char *likan, int fd)
 			free (likan);
 			free (buffer);
 			likan = 0;
-			return (NULL);
+			return (0);
 		}
 		buffer[i] = '\0';
 		likan = ft_strjoin_get(likan, buffer);

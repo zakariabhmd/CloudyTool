@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 00:53:15 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/12 02:46:52 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/14 01:27:56 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,14 @@ void	items_help2(t_savage *criminal)
 		ft_printf("ERROR : chi haja machi hya hadik\n");
 		exit (1);
 	}
+}
+
+int	ft__strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

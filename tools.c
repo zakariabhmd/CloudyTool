@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 05:20:27 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/07 06:03:21 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/14 00:58:01 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char	get_position_in_map(t_savage *criminal, t_dim *wanted_dim)
 	int		idx1;
 	int		idx2;
 
+	res = '\0';
 	idx1 = 0;
 	while (criminal->map[idx1])
 	{

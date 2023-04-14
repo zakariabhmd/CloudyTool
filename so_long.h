@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 06:41:17 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/13 00:34:37 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/14 01:50:11 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ t_dim	get_player_position(t_savage *criminal);
 char	get_position_in_map(t_savage *criminal, t_dim *wanted_dim);
 void	modify_map(t_savage *criminal, t_dim *position, char with_what);
 // --------------hooks----------------
-void	up(t_savage *criminal, t_dim player_pos, \
-	t_dim wanted_pos, char next_pos);
+void	up(t_savage *criminal, t_dim *player_pos, \
+	t_dim *wanted_pos, char next_pos);
 void	left(t_savage *criminal, t_dim player_pos, \
 	t_dim wanted_pos, char next_pos);
 void	down(t_savage *criminal, t_dim player_pos, \
@@ -77,8 +77,8 @@ void	help_rassam2(t_savage *criminal, int y, int x);
 // ------------path------------------
 void	valid_path(t_savage *criminal, int y, int x);
 void	valid_path1(t_savage *criminal, int i, int j);
-void	check_valid_path(t_savage *criminal, int y, int x);
-void	exit_valid_path(t_savage *criminal, int y, int x);
+void	check_valid_path(t_savage *criminal);
+void	exit_valid_path(t_savage *criminal);
 //--------------map-----------------
 void	check_items_help(t_savage *criminal);
 void	check_items_help2(t_savage *criminal);
@@ -89,5 +89,6 @@ void	main2(t_savage *criminal, int y, int x);
 void	check_error(t_savage *criminal, int y, int x);
 void	check_num_help(t_savage *criminal, int i, int y);
 void	freee(t_savage *criminal, char **arr);
+int		ft__strlen(char *str);
 
 #endif

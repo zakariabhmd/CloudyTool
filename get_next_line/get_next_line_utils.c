@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 03:10:20 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/02/24 22:53:38 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/14 02:38:57 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_strjoin_get(char *str1, char *str2)
 		str1 = malloc(1);
 		str1[0] = '\0';
 	}
-	str = malloc((ft_strlen_get(str1) + ft_strlen_get(str2)) + 1);
+	str = ((ft_strlen_get(str1) + ft_strlen_get(str2)) + 1);
 	if (!str)
 		return (0);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:40:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/13 00:51:25 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/14 00:57:01 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	valid_path(t_savage *criminal, int y, int x)
 		}
 		sum--;
 	}
-	check_valid_path(criminal, y, x);
-	exit_valid_path(criminal, y, x);
+	check_valid_path(criminal);
+	exit_valid_path(criminal);
 }
 
 void	valid_path1(t_savage *criminal, int i, int j)
@@ -53,7 +53,7 @@ void	valid_path1(t_savage *criminal, int i, int j)
 		criminal->map1[i - 1][j] = 'P';
 }
 
-void	check_valid_path(t_savage *criminal, int y, int x)
+void	check_valid_path(t_savage *criminal)
 {
 	int	i;
 	int	j;
@@ -92,7 +92,7 @@ int	ft_help(t_savage *criminal, int i, int j, int e)
 	return (e);
 }
 
-void	exit_valid_path(t_savage *criminal, int y, int x)
+void	exit_valid_path(t_savage *criminal)
 {
 	int	i;
 	int	j;
@@ -100,9 +100,9 @@ void	exit_valid_path(t_savage *criminal, int y, int x)
 
 	i = 0;
 	e = 0;
-	while (i != y)
+	while (i != criminal->y)
 	{
-		while (j != x)
+		while (j != criminal->x)
 		{
 			e = ft_help(criminal, i, j, e);
 			j++;
@@ -112,7 +112,7 @@ void	exit_valid_path(t_savage *criminal, int y, int x)
 	}
 	if (e == 0)
 	{
-		ft_printf("invalid pathhhh\n");
+		ft_printf("invalid path\n");
 		exit(1);
 	}
 }

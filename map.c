@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 00:18:01 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/12 22:50:20 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/14 01:50:08 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	check_len(t_savage *criminal, int y, int x)
 	i = 0;
 	while (i != y)
 	{
-		if (x != ft_strlen(criminal->map[i]))
+		if (x != ft__strlen(criminal->map[i]))
 		{
 			ft_printf("ERROR : tol maci hwa hadak\n");
 			exit (1);
