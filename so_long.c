@@ -6,7 +6,7 @@
 /*   By: zbabahmi <zbabahmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 22:39:21 by zbabahmi          #+#    #+#             */
-/*   Updated: 2023/04/13 02:26:59 by zbabahmi         ###   ########.fr       */
+/*   Updated: 2023/04/14 02:43:09 by zbabahmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,15 +129,3 @@ int	main(int ac, char **av)
 	main2(&criminal, criminal.y, criminal.x);
 	initialisation(&criminal);
 }
-
-// void	freee(t_savage *criminal, char **arr)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < criminal->y)
-// 	{
-// 		free (arr[i]);
-// 	}
-// 	free(arr);
-// }
