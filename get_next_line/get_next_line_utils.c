@@ -50,7 +50,7 @@ char	*ft_strjoin_get(char *str1, char *str2)
 		str1 = malloc(1);
 		str1[0] = '\0';
 	}
-	str = ((ft_strlen_get(str1) + ft_strlen_get(str2)) + 1);
+	str = malloc((ft_strlen_get(str1) + ft_strlen_get(str2)) + 1);
 	if (!str)
 		return (0);
 	i = 0;
